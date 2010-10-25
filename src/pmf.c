@@ -34,15 +34,15 @@ static int bin_count = 100;
 /// Number of simulations from input file
 static int sim_count;
 
-/// Beta = k * T, where k - Boltzman constant, T - temperature
-/// Default value is in kcal/mol at 300K
-static double beta;
+/// Beta = 1 / (k * T), where k - Boltzman constant, T - temperature
+/// Default value is in 1 / (kcal/mol) at 300K
+static double beta = 1.6773963842;
 
 /// Lower histogram limit
 static double hist_min;
 
 /// Upper histogram limit
-static double hist_max;
+static double hist_max = 1.0;
 
 /// Array of biasing potential x0 points
 static double *bias_x;
