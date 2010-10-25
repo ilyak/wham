@@ -16,16 +16,16 @@ extern void
 parse_args(int argc, char **argv)
 {
 	static const char short_opts[] =
-			"b:f:t:n:e:r:l:p:i:qhHvV";
+			"b:m:M:n:e:I:s:p:i:qhHvV";
 
 	static const struct option long_opts[] = {
 		{ "beta",         required_argument,  NULL,  'b' },
-		{ "min",          required_argument,  NULL,  'f' },
-		{ "max",          required_argument,  NULL,  't' },
+		{ "min",          required_argument,  NULL,  'm' },
+		{ "max",          required_argument,  NULL,  'M' },
 		{ "bins",         required_argument,  NULL,  'n' },
 		{ "tol",          required_argument,  NULL,  'e' },
-		{ "max-iter",     required_argument,  NULL,  'r' },
-		{ "print-step",   required_argument,  NULL,  'l' },
+		{ "max-iter",     required_argument,  NULL,  'I' },
+		{ "print-step",   required_argument,  NULL,  's' },
 		{ "period",       required_argument,  NULL,  'p' },
 		{ "input",        required_argument,  NULL,  'i' },
 
@@ -47,11 +47,11 @@ parse_args(int argc, char **argv)
 			set_beta(strtod(optarg, NULL));
 			break;
 
-		case 'f':
+		case 'm':
 			set_hist_min(strtod(optarg, NULL));
 			break;
 
-		case 't':
+		case 'M':
 			set_hist_max(strtod(optarg, NULL));
 			break;
 
@@ -63,11 +63,11 @@ parse_args(int argc, char **argv)
 			set_tolerance(strtod(optarg, NULL));
 			break;
 
-		case 'l':
+		case 's':
 			set_print_step(strtoul(optarg, NULL, 0));
 			break;
 
-		case 'r':
+		case 'I':
 			set_max_iter(strtoul(optarg, NULL, 0));
 			break;
 

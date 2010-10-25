@@ -8,31 +8,31 @@
 #ifndef WHAM_PMF_H
 #define WHAM_PMF_H
 
-///
+/// Sets number of bins
 extern void set_bin_count(int value);
 
-///
+/// Sets print step
 extern void set_print_step(int value);
 
-///
+/// Sets maximum number of iterations to perform
 extern void set_max_iter(int value);
 
-///
+/// Sets input file name
 extern void set_input_filename(const char *value);
 
-///
+/// Sets value of beta
 extern void set_beta(double value);
 
-///
+/// Sets minimum coordinate value for the histogram
 extern void set_hist_min(double value);
 
-///
+/// Sets maximum coordinate value for the histogram
 extern void set_hist_max(double value);
 
-///
+/// Sets accuracy for the PMF computation
 extern void set_tolerance(double value);
 
-///
+/// Sets period for periodic coordinates
 extern void set_period(double value);
 
 /// Reads input data

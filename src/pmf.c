@@ -16,31 +16,32 @@
 /// Maximum number of iterations
 static int max_iter = 200;
 
-/// Print every n'th iteration
+/// Print info every n iterations
 static int print_step = 10;
 
 /// Input file name
 static const char *input;
 
-///
+/// Computation tolerance
 static double tol = 1.0e-6;
 
-///
+/// Coordinate period
 static double period;
 
-///
+/// Number of bins in histogram
 static int bin_count = 100;
 
-///
+/// Number of simulations from input file
 static int sim_count;
 
-///
+/// Beta = k * T, where k - Boltzman const, T - temperature
+/// Default value is in kcal/mol for 300K
 static double beta;
 
-///
+/// Lower histogram limit
 static double hist_min;
 
-///
+/// Upper histogram limit
 static double hist_max;
 
 /// Array of biasing potential x0 points
@@ -52,7 +53,7 @@ static double *bias_k;
 /// Log of number of points in bin
 static double *log_nbin;
 
-/// Log of number of points in sim
+/// Log of number of points in simulation
 static double *log_nsim;
 
 extern void

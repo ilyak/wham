@@ -29,7 +29,7 @@ extern void message_help(bool long_help);
 /// Prints version info
 extern void message_version();
 
-/// Prints a message and exits the program
+/// Prints a message and terminates the program with an error
 extern void message_fatal(const char *format, ...);
 
 #endif /* WHAM_MESSAGE_H */
