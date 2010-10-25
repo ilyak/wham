@@ -56,7 +56,8 @@ message_fatal(const char *format, ...)
 	va_list ap;
 
 	va_start(ap, format);
-	vprintf(format, ap);
+	vfprintf(stderr, format, ap);
+	fputc('\n', stderr);
 	va_end(ap);
 
 	lib_exit(E_ERROR);

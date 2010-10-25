@@ -83,30 +83,45 @@ set_input_filename(const char *value)
 extern void
 set_beta(double value)
 {
+	if (value < 0.0)
+		message_fatal("Beta value must be positive");
+
 	beta = value;
 }
 
 extern void
 set_hist_min(double value)
 {
+	if (value > hist_max)
+		message_fatal("Histogram minimum must be less than maximum");
+
 	hist_min = value;
 }
 
 extern void
 set_hist_max(double value)
 {
+	if (value < hist_min)
+		message_fatal("Histogram minimum must be less than maximum");
+
 	hist_max = value;
 }
 
 extern void
 set_tolerance(double value)
 {
+	if (value < 0.0)
+		message_fatal("Tolerance must be positive");
+
 	tol = value;
 }
 
 extern void
 set_period(double value)
 {
+	if (value < 0.0)
+		message_fatal("Period must be positive");
+
 	period = value;
 }
 
