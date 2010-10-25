@@ -29,6 +29,9 @@ extern void message_help(bool long_help);
 /// Prints version info
 extern void message_version();
 
+/// Prints a message taking into account current verbosity level
+extern void message(enum message_verbosity_t ver, const char *format, ...);
+
 /// Prints a message and terminates the program with an error
 extern void message_fatal(const char *format, ...);
 

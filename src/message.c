@@ -29,6 +29,19 @@ message_verbosity_decrease()
 }
 
 extern void
+message(enum message_verbosity_t ver, const char *format, ...)
+{
+	if (ver > verbosity)
+		return;
+
+	va_list ap;
+
+	va_start(ap, format);
+	vprintf(format, ap);
+	va_end(ap);
+}
+
+extern void
 message_version()
 {
 	puts(PACKAGE_NAME " version " PACKAGE_VERSION);
