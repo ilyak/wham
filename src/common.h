@@ -8,17 +8,17 @@
 #ifndef WHAM_COMMON_H
 #define WHAM_COMMON_H
 
-///
+/// Exit status
 enum exit_status_t {
 	E_SUCCESS  = 0,
 	E_ERROR    = 1,
 	E_WARNING  = 2
 };
 
-///
+/// Terminates the program by calling exit
 extern void lib_exit(enum exit_status_t status);
 
-///
+/// Prints a message and exits the program
 extern void message_fatal(const char *format, ...);
 
 #endif /* WHAM_COMMON_H */

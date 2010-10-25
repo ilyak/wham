@@ -16,16 +16,16 @@ extern int bin_count;
 ///
 extern int sim_count;
 
-///
+/// Maximum number of iterations
 extern int max_iter;
 
-///
+/// Print every n'th iteration
 extern int print_step;
 
-///
+/// Be verbose
 extern bool verbose;
 
-///
+/// Input file name
 extern const char *input;
 
 ///
@@ -43,7 +43,7 @@ extern double tol;
 ///
 extern double period;
 
-///
+/// Parses program arguments
 extern void parse_args(int argc, char **argv);
 
 #endif /* WHAM_ARGS_H */

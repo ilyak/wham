@@ -12,30 +12,31 @@
 #include "common.h"
 #include "pmf.h"
 
-///
+
+/// Array of biasing potential x0 points
 static double *bias_x;
 
-///
+/// Array of biasing potential constants
 static double *bias_k;
 
-///
+/// Log of number of points in bin
 static double *log_nbin;
 
-///
+/// Log of number of points in sim
 static double *log_nsim;
-
-
-static int
-bin_index(double x)
-{
-	return (int)((x - hist_min) / (hist_max - hist_min) * bin_count);
-}
 
 
 extern double
 hist_x(int i)
 {
 	return hist_min + (hist_max - hist_min) / bin_count * (0.5 + i);
+}
+
+
+static int
+bin_index(double x)
+{
+	return (int)((x - hist_min) / (hist_max - hist_min) * bin_count);
 }
 
 

@@ -12,37 +12,17 @@
 #include "args.h"
 #include "common.h"
 
-///
+
 int bin_count = 100;
-
-///
 int sim_count;
-
-///
 int max_iter = 200;
-
-///
 int print_step = 10;
-
-///
 bool verbose = false;
-
-///
 const char *input;
-
-///
 double beta;
-
-///
 double hist_min;
-
-///
 double hist_max;
-
-///
 double tol = 1.0e-6;
-
-///
 double period;
 
 
