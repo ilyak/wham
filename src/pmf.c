@@ -34,8 +34,8 @@ static int bin_count = 100;
 /// Number of simulations from input file
 static int sim_count;
 
-/// Beta = k * T, where k - Boltzman const, T - temperature
-/// Default value is in kcal/mol for 300K
+/// Beta = k * T, where k - Boltzman constant, T - temperature
+/// Default value is in kcal/mol at 300K
 static double beta;
 
 /// Lower histogram limit

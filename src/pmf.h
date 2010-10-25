@@ -20,7 +20,7 @@ extern void set_max_iter(int value);
 /// Sets input file name
 extern void set_input_filename(const char *value);
 
-/// Sets value of beta
+/// Sets the value of beta
 extern void set_beta(double value);
 
 /// Sets minimum coordinate value for the histogram
