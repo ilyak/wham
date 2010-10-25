@@ -50,14 +50,26 @@ message_version(void)
 	lib_exit(E_SUCCESS);
 }
 
+static void
+message_short_help(void)
+{
+	puts("Usage: wham -b beta -m min -M max -n bins -e tol -I iter");
+	puts("            -s step -p period -i input -qhHvV");
+}
+
+static void
+message_long_help(void)
+{
+	puts("Usage: wham OPTIONS");
+}
+
 extern void
 message_help(bool long_help)
 {
-	puts("Usage: wham OPTIONS");
-
-	if (long_help) {
-		puts("more help");
-	}
+	if (long_help)
+		message_long_help();
+	else
+		message_short_help();
 
 	lib_exit(E_SUCCESS);
 }
