@@ -1,5 +1,5 @@
 AC_PREREQ([2.64])
-AC_INIT([wham], [1.3], [ilya.kaliman@gmail.com])
+AC_INIT([wham], [2.0], [ilya.kaliman@gmail.com])
 AC_CONFIG_SRCDIR([src/pmf.c])
 AM_INIT_AUTOMAKE([-Wall -Werror])
 
