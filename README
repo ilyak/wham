@@ -1,1 +1,7 @@
-This program implements Wheighted Historgam Analysis Method.
+This program implements Weighted Historgam Analysis Method.
+
+Algorithm Reference:
+
+Benoit Roux.
+The calculation of the potential of mean forece using computer simulations.
+Computer Physics Communications 91 (1995) 275-282.

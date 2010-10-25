@@ -21,7 +21,8 @@ if test x$ac_cv_prog_cc_c99 = xno ; then
 fi
 
 if test "$GCC" = yes ; then
-	for NEW_FLAG in -Wall \
+	for NEW_FLAG in \
+			-Wall \
 			-Wextra \
 			-Wformat=2 \
 			-Winit-self \
