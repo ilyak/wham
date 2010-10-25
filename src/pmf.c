@@ -291,10 +291,10 @@ read_input(void)
 	FILE *in = input ? fopen(input, "r") : stdin;
 
 	if (in == NULL)
-		message_fatal("Unable to open input file\n");
+		message_fatal("Unable to open input file");
 
 	if (fscanf(in, "%d", &sim_count) != 1)
-		message_fatal("Unable to read number of simulations\n");
+		message_fatal("Unable to read number of simulations");
 
 	size_t size_sim = sizeof(double) * sim_count;
 	size_t size_bin = sizeof(double) * bin_count;
@@ -311,14 +311,14 @@ read_input(void)
 		double x;
 
 		if (fscanf(in, "%lf %lf", &bias_x[i], &bias_k[i]) != 2)
-			message_fatal("Error reading bias info\n");
+			message_fatal("Error reading bias info");
 
 		if (fscanf(in, "%d", &npt) != 1)
-			message_fatal("");
+			message_fatal("Error reading point count");
 
 		for (int j = 0; j < npt; j++) {
 			if (fscanf(in, "%lf", &x) != 1)
-				message_fatal("");
+				message_fatal("Error reading data points");
 
 			if (x > hist_min && x < hist_max) {
 				nbin[bin_index(x)]++;
