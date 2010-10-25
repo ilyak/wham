@@ -8,16 +8,16 @@
 #ifndef WHAM_PMF_H
 #define WHAM_PMF_H
 
-///
+/// Reads input data
 extern void read_input();
 
-///
+/// Performs PMF computation
 extern void compute_pmf(double *pmf);
 
-///
+/// Returns x value of the center of specified bin
 extern double hist_x(int i);
 
-///
+/// Deallocates used memory
 extern void cleanup();
 
 #endif /* WHAM_PMF_H */
