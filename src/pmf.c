@@ -259,13 +259,14 @@ compute_pmf(void)
 			break;
 
 		if (iter % print_step == 0)
-			printf("Iteration %d, delta is %.8E\n", iter, delta);
+			message(V_VERBOSE, "Iteration %d, delta is %.8E",
+					iter, delta);
 	}
 
 	static const char msg1[] = "Procedure converged";
 	static const char msg2[] = "Procedure didn't converge";
 
-	puts(iter < max_iter ? msg1 : msg2);
+	message(V_NORMAL, iter < max_iter ? msg1 : msg2);
 
 	double pmf[bin_count];
 
@@ -277,12 +278,12 @@ compute_pmf(void)
 	for (int i = 0; i < bin_count; i++)
 		pmf[i] -= min;
 
-	puts("Printing PMF...\n");
+	message(V_NORMAL, "Printing PMF...\n");
 
 	for (int i = 0; i < bin_count; i++)
-		printf("%12.6lf %12.6lf\n", hist_x(i), pmf[i]);
+		message(V_SILENT, "%12.6lf %12.6lf", hist_x(i), pmf[i]);
 
-	puts("\nComputation completed.");
+	message(V_NORMAL, "\nComputation completed.");
 }
 
 extern void
@@ -326,8 +327,8 @@ read_input(void)
 			}
 		}
 
-		printf("%d of total %d points in sim %d, x = %lf, k = %lf\n",
-			nsim[i], npt, i + 1, bias_x[i], bias_k[i]);
+		message(V_VERBOSE, "Added %d of %d points from set %d",
+					nsim[i], npt, i + 1);
 	}
 
 	for (int i = 0; i < bin_count; i++)

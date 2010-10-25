@@ -37,6 +37,7 @@ message(enum message_verbosity_t ver, const char *format, ...)
 
 	va_start(ap, format);
 	vprintf(format, ap);
+	putchar('\n');
 	va_end(ap);
 }
 
@@ -81,7 +82,7 @@ message_fatal(const char *format, ...)
 
 	va_start(ap, format);
 	vfprintf(stderr, format, ap);
-	fputc('\n', stderr);
+	putc('\n', stderr);
 	va_end(ap);
 
 	lib_exit(E_ERROR);
