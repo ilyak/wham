@@ -10,7 +10,32 @@
 #include <stdlib.h>
 #include "args.h"
 #include "common.h"
+#include "message.h"
 #include "pmf.h"
+
+/// Maximum number of iterations
+static int max_iter = 200;
+
+/// Print every n'th iteration
+static int print_step = 10;
+
+/// Input file name
+static const char *input;
+
+///
+static double tol = 1.0e-6;
+
+///
+static double period;
+
+///
+static int bin_count = 100;
+
+///
+static int sim_count;
+
+///
+static double beta;
 
 ///
 static double hist_min;
@@ -30,34 +55,71 @@ static double *log_nbin;
 /// Log of number of points in sim
 static double *log_nsim;
 
-
 extern void
-set_hist_min(double v)
+set_bin_count(int value)
 {
-	hist_min = v;
+	bin_count = value;
 }
 
-
 extern void
-set_hist_max(double v)
+set_print_step(int value)
 {
-	hist_max = v;
+	print_step = value;
 }
 
+extern void
+set_max_iter(int value)
+{
+	max_iter = value;
+}
 
-extern double
+extern void
+set_input_filename(const char *value)
+{
+	input = value;
+}
+
+extern void
+set_beta(double value)
+{
+	beta = value;
+}
+
+extern void
+set_hist_min(double value)
+{
+	hist_min = value;
+}
+
+extern void
+set_hist_max(double value)
+{
+	hist_max = value;
+}
+
+extern void
+set_tolerance(double value)
+{
+	tol = value;
+}
+
+extern void
+set_period(double value)
+{
+	period = value;
+}
+
+static double
 hist_x(int i)
 {
 	return hist_min + (hist_max - hist_min) / bin_count * (0.5 + i);
 }
-
 
 static int
 bin_index(double x)
 {
 	return (int)((x - hist_min) / (hist_max - hist_min) * bin_count);
 }
-
 
 static double
 find_min(const double *v, int n)
@@ -71,7 +133,6 @@ find_min(const double *v, int n)
 	return rv;
 }
 
-
 static double
 find_max(const double *v, int n)
 {
@@ -84,7 +145,6 @@ find_max(const double *v, int n)
 	return rv;
 }
 
-
 static double
 log_sum(const double *v, int n)
 {
@@ -96,7 +156,6 @@ log_sum(const double *v, int n)
 
 	return log(sum) + max;
 }
-
 
 static void
 pmf_iteration(double *f, double *log_r)
@@ -151,9 +210,8 @@ pmf_iteration(double *f, double *log_r)
 	}
 }
 
-
 extern void
-compute_pmf(double *pmf)
+compute_pmf()
 {
 	double f[sim_count], old_f[sim_count], log_r[bin_count];
 
@@ -193,6 +251,8 @@ compute_pmf(double *pmf)
 
 	puts(iter < max_iter ? msg1 : msg2);
 
+	double pmf[bin_count];
+
 	for (int i = 0; i < bin_count; i++)
 		pmf[i] = -log_r[i] / beta;
 
@@ -200,8 +260,14 @@ compute_pmf(double *pmf)
 
 	for (int i = 0; i < bin_count; i++)
 		pmf[i] -= min;
-}
 
+	puts("Printing PMF...\n");
+
+	for (int i = 0; i < bin_count; i++)
+		printf("%12.6lf %12.6lf\n", hist_x(i), pmf[i]);
+
+	puts("\nComputation completed.");
+}
 
 extern void
 read_input()
@@ -257,7 +323,6 @@ read_input()
 	if (in != stdin)
 		fclose(in);
 }
-
 
 extern void
 cleanup()

@@ -18,7 +18,4 @@ enum exit_status_t {
 /// Terminates the program by calling exit
 extern void lib_exit(enum exit_status_t status);
 
-/// Prints a message and exits the program
-extern void message_fatal(const char *format, ...);
-
 #endif /* WHAM_COMMON_H */

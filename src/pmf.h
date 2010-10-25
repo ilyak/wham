@@ -8,20 +8,38 @@
 #ifndef WHAM_PMF_H
 #define WHAM_PMF_H
 
+///
+extern void set_bin_count(int value);
+
+///
+extern void set_print_step(int value);
+
+///
+extern void set_max_iter(int value);
+
+///
+extern void set_input_filename(const char *value);
+
+///
+extern void set_beta(double value);
+
+///
+extern void set_hist_min(double value);
+
+///
+extern void set_hist_max(double value);
+
+///
+extern void set_tolerance(double value);
+
+///
+extern void set_period(double value);
+
 /// Reads input data
 extern void read_input();
 
 /// Performs PMF computation
-extern void compute_pmf(double *pmf);
-
-///
-extern void set_hist_min(double v);
-
-///
-extern void set_hist_max(double v);
-
-/// Returns x value of the center of specified bin
-extern double hist_x(int i);
+extern void compute_pmf();
 
 /// Deallocates used memory
 extern void cleanup();

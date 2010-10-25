@@ -5,55 +5,18 @@
 // See file COPYING for conditions of distribution and use.
 //
 
-#include <config.h>
 #include <getopt.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include "args.h"
 #include "common.h"
+#include "message.h"
 #include "pmf.h"
-
-
-int bin_count = 100;
-int sim_count;
-int max_iter = 200;
-int print_step = 10;
-bool verbose = false;
-const char *input;
-double beta;
-double tol = 1.0e-6;
-double period;
-
-
-static void
-message_version()
-{
-	puts(PACKAGE_NAME " version " PACKAGE_VERSION);
-	puts("Copyright (c) 2010 Ilya Kaliman");
-	puts("See file COPYING for conditions of distribution and use");
-
-	lib_exit(E_SUCCESS);
-}
-
-
-static void
-message_help(bool long_help)
-{
-	puts("Usage: wham OPTIONS");
-
-	if (long_help) {
-		puts("more help");
-	}
-
-	lib_exit(E_SUCCESS);
-}
-
 
 extern void
 parse_args(int argc, char **argv)
 {
 	static const char short_opts[] =
-			"b:f:t:n:e:r:l:p:i:hHvV";
+			"b:f:t:n:e:r:l:p:i:qhHvV";
 
 	static const struct option long_opts[] = {
 		{ "beta",         required_argument,  NULL,  'b' },
@@ -66,12 +29,13 @@ parse_args(int argc, char **argv)
 		{ "period",       required_argument,  NULL,  'p' },
 		{ "input",        required_argument,  NULL,  'i' },
 
+		{ "quiet",        no_argument,        NULL,  'q' },
 		{ "help",         no_argument,        NULL,  'h' },
 		{ "long-help",    no_argument,        NULL,  'H' },
 		{ "verbose",      no_argument,        NULL,  'v' },
 		{ "version",      no_argument,        NULL,  'V' },
 
-		{ NULL,           0,                  NULL,   0  }
+		{  NULL,          0,                  NULL,   0  }
 	};
 
 	int c;
@@ -80,7 +44,7 @@ parse_args(int argc, char **argv)
 			!= -1) {
 		switch (c) {
 		case 'b':
-			beta = strtod(optarg, NULL);
+			set_beta(strtod(optarg, NULL));
 			break;
 
 		case 'f':
@@ -92,31 +56,35 @@ parse_args(int argc, char **argv)
 			break;
 
 		case 'n':
-			bin_count = strtoul(optarg, NULL, 0);
+			set_bin_count(strtoul(optarg, NULL, 0));
 			break;
 
 		case 'e':
-			tol = strtod(optarg, NULL);
+			set_tolerance(strtod(optarg, NULL));
 			break;
 
 		case 'l':
-			print_step = strtoul(optarg, NULL, 0);
+			set_print_step(strtoul(optarg, NULL, 0));
 			break;
 
 		case 'r':
-			max_iter = strtoul(optarg, NULL, 0);
+			set_max_iter(strtoul(optarg, NULL, 0));
 			break;
 
 		case 'p':
-			period = strtod(optarg, NULL);
+			set_period(strtod(optarg, NULL));
 			break;
 
 		case 'i':
-			input = optarg;
+			set_input_filename(optarg);
+			break;
+
+		case 'q':
+			message_verbosity_decrease();
 			break;
 
 		case 'v':
-			verbose = true;
+			message_verbosity_increase();
 			break;
 
 		case 'V':
