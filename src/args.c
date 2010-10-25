@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include "args.h"
 #include "common.h"
+#include "pmf.h"
 
 
 int bin_count = 100;
@@ -20,8 +21,6 @@ int print_step = 10;
 bool verbose = false;
 const char *input;
 double beta;
-double hist_min;
-double hist_max;
 double tol = 1.0e-6;
 double period;
 
@@ -85,11 +84,11 @@ parse_args(int argc, char **argv)
 			break;
 
 		case 'f':
-			hist_min = strtod(optarg, NULL);
+			set_hist_min(strtod(optarg, NULL));
 			break;
 
 		case 't':
-			hist_max = strtod(optarg, NULL);
+			set_hist_max(strtod(optarg, NULL));
 			break;
 
 		case 'n':

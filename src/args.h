@@ -32,12 +32,6 @@ extern const char *input;
 extern double beta;
 
 ///
-extern double hist_min;
-
-///
-extern double hist_max;
-
-///
 extern double tol;
 
 ///

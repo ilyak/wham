@@ -12,6 +12,11 @@
 #include "common.h"
 #include "pmf.h"
 
+///
+static double hist_min;
+
+///
+static double hist_max;
 
 /// Array of biasing potential x0 points
 static double *bias_x;
@@ -24,6 +29,20 @@ static double *log_nbin;
 
 /// Log of number of points in sim
 static double *log_nsim;
+
+
+extern void
+set_hist_min(double v)
+{
+	hist_min = v;
+}
+
+
+extern void
+set_hist_max(double v)
+{
+	hist_max = v;
+}
 
 
 extern double

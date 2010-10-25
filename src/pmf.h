@@ -14,6 +14,12 @@ extern void read_input();
 /// Performs PMF computation
 extern void compute_pmf(double *pmf);
 
+///
+extern void set_hist_min(double v);
+
+///
+extern void set_hist_max(double v);
+
 /// Returns x value of the center of specified bin
 extern double hist_x(int i);
 
