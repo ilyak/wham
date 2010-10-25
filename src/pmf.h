@@ -36,12 +36,12 @@ extern void set_tolerance(double value);
 extern void set_period(double value);
 
 /// Reads input data
-extern void read_input();
+extern void read_input(void);
 
 /// Performs PMF computation
-extern void compute_pmf();
+extern void compute_pmf(void);
 
 /// Deallocates used memory
-extern void cleanup();
+extern void cleanup(void);
 
 #endif /* WHAM_PMF_H */

@@ -3,7 +3,17 @@ AC_INIT([wham], [1.3], [ilya.kaliman@gmail.com])
 AC_CONFIG_SRCDIR([src/pmf.c])
 AM_INIT_AUTOMAKE([-Wall -Werror])
 
-AC_LANG(C)
+AC_MSG_CHECKING([if debugging code should be compiled])
+AC_ARG_ENABLE([debug], AC_HELP_STRING(
+	[--enable-debug], [Enable debugging code.]), [], enable_debug=no)
+if test "x$enable_debug" = xyes; then
+	AC_MSG_RESULT([yes])
+else
+	AC_DEFINE([NDEBUG], [1], [Define to 1 to disable debugging code.])
+	AC_MSG_RESULT([no])
+fi
+
+AC_LANG([C])
 AC_PROG_CC
 AC_PROG_CC_C99
 if test x$ac_cv_prog_cc_c99 = xno ; then
@@ -54,7 +64,7 @@ if test "$GCC" = yes ; then
 fi
 
 AC_CHECK_LIB([m], [log])
-
 AC_CONFIG_HEADERS([config.h])
+AC_SUBST([AM_CFLAGS])
 AC_CONFIG_FILES([Makefile src/Makefile tests/Makefile])
 AC_OUTPUT

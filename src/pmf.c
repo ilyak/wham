@@ -227,7 +227,7 @@ pmf_iteration(double *f, double *log_r)
 }
 
 extern void
-compute_pmf()
+compute_pmf(void)
 {
 	double f[sim_count], old_f[sim_count], log_r[bin_count];
 
@@ -286,7 +286,7 @@ compute_pmf()
 }
 
 extern void
-read_input()
+read_input(void)
 {
 	FILE *in = input ? fopen(input, "r") : stdin;
 
@@ -341,7 +341,7 @@ read_input()
 }
 
 extern void
-cleanup()
+cleanup(void)
 {
 	free(bias_x);
 	free(bias_k);

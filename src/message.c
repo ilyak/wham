@@ -8,21 +8,20 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <config.h>
-#include "common.h"
 #include "message.h"
 
 /// Verbosity level
 static enum message_verbosity_t verbosity = V_NORMAL;
 
 extern void
-message_verbosity_increase()
+message_verbosity_increase(void)
 {
 	if (verbosity < V_VERBOSE)
 		verbosity++;
 }
 
 extern void
-message_verbosity_decrease()
+message_verbosity_decrease(void)
 {
 	if (verbosity > V_SILENT)
 		verbosity--;
@@ -42,7 +41,7 @@ message(enum message_verbosity_t ver, const char *format, ...)
 }
 
 extern void
-message_version()
+message_version(void)
 {
 	puts(PACKAGE_NAME " version " PACKAGE_VERSION);
 	puts("Copyright (c) 2010 Ilya Kaliman");

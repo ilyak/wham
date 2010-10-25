@@ -8,6 +8,8 @@
 #ifndef WHAM_COMMON_H
 #define WHAM_COMMON_H
 
+#define lib_attr_noreturn __attribute__((__noreturn__))
+
 /// Exit status
 enum exit_status_t {
 	E_SUCCESS  = 0,
@@ -16,6 +18,6 @@ enum exit_status_t {
 };
 
 /// Terminates the program by calling exit
-extern void lib_exit(enum exit_status_t status);
+extern void lib_exit(enum exit_status_t status) lib_attr_noreturn;
 
 #endif /* WHAM_COMMON_H */
