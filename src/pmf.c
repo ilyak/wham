@@ -14,22 +14,22 @@
 #include "pmf.h"
 
 /// Maximum number of iterations
-static int max_iter = 200;
+static int max_iter = 400;
 
 /// Print info every n iterations
-static int print_step = 10;
+static int print_step = 20;
 
 /// Input file name
 static const char *input;
 
 /// Computation tolerance
-static double tol = 1.0e-6;
+static double tol = 1.0e-5;
 
 /// Coordinate period
 static double period;
 
 /// Number of bins in histogram
-static int bin_count = 100;
+static int bin_count = 50;
 
 /// Number of simulations from input file
 static int sim_count;
@@ -42,7 +42,7 @@ static double beta = 1.6773963842;
 static double hist_min;
 
 /// Upper histogram limit
-static double hist_max = 1.0;
+static double hist_max;
 
 /// Array of biasing potential x0 points
 static double *bias_x;
@@ -92,6 +92,9 @@ set_beta(double value)
 extern void
 set_hist_min(double value)
 {
+	if (period > 0)
+		message_fatal("Incompatible options -m and -p");
+
 	if (value > hist_max)
 		message_fatal("Histogram minimum must be less than maximum");
 
@@ -101,6 +104,9 @@ set_hist_min(double value)
 extern void
 set_hist_max(double value)
 {
+	if (period > 0)
+		message_fatal("Incompatible options -M and -p");
+
 	if (value < hist_min)
 		message_fatal("Histogram minimum must be less than maximum");
 
@@ -123,12 +129,14 @@ set_period(double value)
 		message_fatal("Period must be positive");
 
 	period = value;
+	hist_min = 0.0;
+	hist_max = period;
 }
 
 static double
 hist_x(int i)
 {
-	return hist_min + (hist_max - hist_min) / bin_count * (0.5 + i);
+	return hist_min + (hist_max - hist_min) / bin_count * i;
 }
 
 static int
@@ -234,9 +242,9 @@ compute_pmf(void)
 	for (int i = 0; i < sim_count; i++)
 		f[i] = 0.0;
 
-	int iter;
+	double delta = 0.0;
 
-	for (iter = 0; iter < max_iter; iter++) {
+	for (int iter = 0; iter < max_iter; iter++) {
 		for (int i = 0; i < sim_count; i++)
 			old_f[i] = f[i];
 
@@ -247,7 +255,7 @@ compute_pmf(void)
 		for (int i = 0; i < sim_count; i++)
 			f[i] -= f0;
 
-		double delta = 0.0;
+		delta = 0.0;
 
 		for (int i = 0; i < sim_count; i++) {
 			double df = fabs(f[i] - old_f[i]);
@@ -266,7 +274,8 @@ compute_pmf(void)
 	static const char msg1[] = "Procedure converged";
 	static const char msg2[] = "Procedure didn't converge";
 
-	message(V_NORMAL, iter < max_iter ? msg1 : msg2);
+	message(V_NORMAL, delta < tol ? msg1 : msg2);
+	message(V_NORMAL, "Last delta is %.8E", delta);
 
 	double pmf[bin_count];
 
@@ -279,6 +288,7 @@ compute_pmf(void)
 		pmf[i] -= min;
 
 	message(V_NORMAL, "Printing PMF...\n");
+	message(V_NORMAL, "%9s %13s\n", "x", "pmf");
 
 	for (int i = 0; i < bin_count; i++)
 		message(V_SILENT, "%12.6lf %12.6lf", hist_x(i), pmf[i]);
@@ -307,6 +317,9 @@ read_input(void)
 
 	int nbin[bin_count], nsim[sim_count];
 
+	for (int i = 0; i < bin_count; i++)
+		nbin[i] = 0;
+
 	for (int i = 0; i < sim_count; i++) {
 		int npt;
 		double x;
@@ -317,9 +330,20 @@ read_input(void)
 		if (fscanf(in, "%d", &npt) != 1)
 			message_fatal("Error reading point count");
 
+		nsim[i] = 0;
+
 		for (int j = 0; j < npt; j++) {
 			if (fscanf(in, "%lf", &x) != 1)
 				message_fatal("Error reading data points");
+
+			if (period > 0) {
+				if (x > 0)
+					while (x > period)
+						x -= period;
+				else
+					while (x < 0)
+						x += period;
+			}
 
 			if (x > hist_min && x < hist_max) {
 				nbin[bin_index(x)]++;
