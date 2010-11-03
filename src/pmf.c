@@ -7,7 +7,6 @@
 
 #include <math.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include "args.h"
 #include "common.h"
 #include "message.h"
@@ -310,10 +309,10 @@ read_input(void)
 	size_t size_sim = sizeof(double) * sim_count;
 	size_t size_bin = sizeof(double) * bin_count;
 
-	bias_x = malloc(size_sim);
-	bias_k = malloc(size_sim);
-	log_nbin = malloc(size_bin);
-	log_nsim = malloc(size_sim);
+	bias_x = xalloc(size_sim);
+	bias_k = xalloc(size_sim);
+	log_nbin = xalloc(size_bin);
+	log_nsim = xalloc(size_sim);
 
 	int nbin[bin_count], nsim[sim_count];
 
