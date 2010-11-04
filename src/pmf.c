@@ -21,7 +21,7 @@ static int print_step = 20;
 /// Input file name
 static const char *input;
 
-/// Computation tolerance
+/// Convergence tolerance
 static double tol = 1.0e-5;
 
 /// Coordinate period
@@ -83,7 +83,7 @@ extern void
 set_beta(double value)
 {
 	if (value < 0.0)
-		message_fatal("Beta value must be positive");
+		message_fatal("Beta must be positive");
 
 	beta = value;
 }
@@ -306,6 +306,9 @@ read_input(void)
 	if (fscanf(in, "%d", &sim_count) != 1)
 		message_fatal("Unable to read number of simulations");
 
+	if (sim_count <= 0)
+		message_fatal("Expected positive number of windows");
+
 	size_t size_sim = sizeof(double) * sim_count;
 	size_t size_bin = sizeof(double) * bin_count;
 
@@ -328,6 +331,9 @@ read_input(void)
 
 		if (fscanf(in, "%d", &npt) != 1)
 			message_fatal("Error reading point count");
+
+		if (npt <= 0)
+			message_fatal("Expected positive number of points");
 
 		nsim[i] = 0;
 

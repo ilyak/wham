@@ -12,7 +12,7 @@ extern void *
 xalloc(size_t size)
 {
 	if (size == 0)
-		message_fatal("Unable to allocate zero bytes");
+		message_fatal("Unsupported request for zero byte allocation");
 
 	void *ptr = malloc(size);
 
