@@ -16,7 +16,7 @@ AC_PROG_CPP
 
 AC_CHECK_LIB([m], [log])
 
-DEVELOPER_CFLAGS="-Wall -Wextra -Wno-missing-field-initializers -Wno-sign-compare -Wstrict-prototypes -Wmissing-prototypes -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wshadow -Wcast-align -Wunused-parameter -Wchar-subscripts -Winline -Wnested-externs -Wredundant-decls -Wformat=2 -Winit-self -Wmissing-include-dirs -Wstrict-aliasing -Wfloat-equal -Wundef -Wpointer-arith -Wbad-function-cast -Wlogical-op -Waggregate-return -Wold-style-definition -Wmissing-declarations -Wmissing-noreturn"
+DEVELOPER_CFLAGS="-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wshadow -Wcast-align -Wunused-parameter -Wchar-subscripts -Winline -Wnested-externs -Wredundant-decls -Wformat=2 -Winit-self -Wmissing-include-dirs -Wstrict-aliasing -Wfloat-equal -Wundef -Wbad-function-cast -Wlogical-op -Waggregate-return -Wold-style-definition -Wmissing-declarations -Wmissing-noreturn"
 
 AC_ARG_ENABLE([developer-warnings],
 	AS_HELP_STRING([--enable-developer-warnings],
