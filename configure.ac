@@ -3,20 +3,10 @@ AC_INIT([wham], [2.0], [ilya.kaliman@gmail.com])
 AC_CONFIG_SRCDIR([src/pmf.c])
 AM_INIT_AUTOMAKE([-Wall -Werror])
 
-AC_MSG_CHECKING([if debugging code should be compiled])
-AC_ARG_ENABLE([debug], AC_HELP_STRING(
-	[--enable-debug], [Enable debugging code.]), [], enable_debug=no)
-if test "x$enable_debug" = xyes; then
-	AC_MSG_RESULT([yes])
-else
-	AC_DEFINE([NDEBUG], [1], [Define to 1 to disable debugging code.])
-	AC_MSG_RESULT([no])
-fi
-
 AC_LANG([C])
 AC_PROG_CC
 AC_PROG_CC_C99
-if test x$ac_cv_prog_cc_c99 = xno ; then
+if test "x$ac_cv_prog_cc_c99" = xno ; then
 	AC_MSG_ERROR([No C99 compiler was found.])
 fi
 
@@ -54,15 +44,16 @@ if test "$GCC" = yes ; then
 		])
 		CFLAGS="$OLD_CFLAGS"
 	done
-
-	AC_ARG_ENABLE([werror],
-		AC_HELP_STRING([--enable-werror], [Enable -Werror to abort
-			compilation on all compiler warnings.]),
-		[], [enable_werror=no])
-	if test "x$enable_werror" = "xyes"; then
-		AM_CFLAGS="$AM_CFLAGS -Werror"
-	fi
 fi
+
+AC_ARG_ENABLE([debugging-symbols],
+	AS_HELP_STRING([--enable-debugging-symbols],
+		[enable debugging symbols (default is NO)]),
+	AM_CFLAGS="${AM_CFLAGS} -O0 -g -fno-inline")
+
+AC_ARG_ENABLE([werror],
+	AS_HELP_STRING([--enable-werror], [use -Werror (default is NO)]),
+	AM_CFLAGS="${AM_CFLAGS} -Werror")
 
 AC_CHECK_LIB([m], [log])
 AC_CONFIG_HEADERS([config.h])
