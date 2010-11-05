@@ -38,10 +38,10 @@ static int sim_count;
 static double beta = 1.6773963842;
 
 /// Lower histogram limit
-static double hist_min;
+static double hist_min = 0.0;
 
 /// Upper histogram limit
-static double hist_max;
+static double hist_max = 1.0;
 
 /// Array of biasing potential x0 points
 static double *bias_x;
