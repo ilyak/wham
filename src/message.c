@@ -65,26 +65,35 @@ message_long_help(void)
 
 	puts("  Input source:\n");
 
-	puts("    -i, --input=FILE       \n");
-	
+	puts(
+"    -i, --input=FILE       Name of the input file. Input will be read from\n"
+"                           standard input if you do not specify this option."
+"\n");
+
 	puts("  Main control options:\n");
 
-	puts("    -b, --beta=BETA        ");
-	puts("    -m, --min=MIN          ");
-	puts("    -M, --max=MAX          ");
-	puts("    -p, --period=PERIOD    ");
-	puts("    -n, --bins=BINS        ");
-	puts("    -e, --tol=TOL          ");
-	puts("    -s, --print-step=STEP  ");
-	puts("    -I, --max-iter=ITER    \n");
+	puts(
+"    -b, --beta=BETA        1 / (k * T), where k is Boltzmann constant and T\n"
+"                           is temperature. Energy units used here will also\n"
+"                           be used for final PMF.");
+	puts("    -m, --min=MIN          Lower bound of histogram.");
+	puts("    -M, --max=MAX          Upper bound of histogram.");
+	puts("    -p, --period=PERIOD    Period for periodic coordinates.");
+	puts("    -n, --bins=BINS        Number of bins in final PMF.");
+	puts("    -e, --tol=TOL          Convergence tolerance.");
+	puts(
+"    -s, --print-step=STEP  Current progress will be printed every STEP\n"
+"                           iterations.");
+	puts(
+"    -I, --max-iter=ITER    Maximum number of iterations to perform.\n");
 
 	puts("  Other options:\n");
 
-	puts("    -q, --quiet            ");
-	puts("    -v, --verbose          ");
-	puts("    -h, --help             ");
-	puts("    -H, --long-help        ");
-	puts("    -V, --version          ");
+	puts("    -q, --quiet            Print only final PMF.");
+	puts("    -v, --verbose          Print all messages.");
+	puts("    -h, --help             Shows help.");
+	puts("    -H, --long-help        Shows this help message.");
+	puts("    -V, --version          Print program version.");
 }
 
 extern void
