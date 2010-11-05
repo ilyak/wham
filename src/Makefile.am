@@ -1,11 +1,15 @@
+
 bin_PROGRAMS = wham
+
 wham_SOURCES = \
-		main.c \
-		args.c \
-		args.h \
-		common.c \
-		common.h \
-		message.c \
-		message.h \
-		pmf.c \
-		pmf.h
+	main.c \
+	args.c \
+	common.c \
+	message.c \
+	pmf.c
+
+noinst_HEADERS = \
+	args.h \
+	common.h \
+	message.h \
+	pmf.h
