@@ -307,7 +307,7 @@ read_input(void)
 		message_fatal("Unable to read number of simulations");
 
 	if (sim_count <= 0)
-		message_fatal("Expected positive number of windows");
+		message_fatal("Expected positive number of simulations");
 
 	size_t size_sim = sizeof(double) * sim_count;
 	size_t size_bin = sizeof(double) * bin_count;
