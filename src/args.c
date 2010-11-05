@@ -12,7 +12,7 @@
 #include "message.h"
 #include "pmf.h"
 
-extern void
+void
 parse_args(int argc, char **argv)
 {
 	static const char short_opts[] =

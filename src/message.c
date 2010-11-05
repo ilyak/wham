@@ -13,21 +13,21 @@
 /// Verbosity level
 static enum message_verbosity_t verbosity = V_NORMAL;
 
-extern void
+void
 message_verbosity_increase(void)
 {
 	if (verbosity < V_VERBOSE)
 		verbosity++;
 }
 
-extern void
+void
 message_verbosity_decrease(void)
 {
 	if (verbosity > V_SILENT)
 		verbosity--;
 }
 
-extern void
+void
 message(enum message_verbosity_t ver, const char *format, ...)
 {
 	if (ver > verbosity)
@@ -41,7 +41,7 @@ message(enum message_verbosity_t ver, const char *format, ...)
 	va_end(ap);
 }
 
-extern void
+void
 message_version(void)
 {
 	puts(PACKAGE_NAME " version " PACKAGE_VERSION);
@@ -96,7 +96,7 @@ message_long_help(void)
 	puts("    -V, --version          Print program version.");
 }
 
-extern void
+void
 message_help(bool long_help)
 {
 	if (long_help)
@@ -107,7 +107,7 @@ message_help(bool long_help)
 	lib_exit(E_SUCCESS);
 }
 
-extern void
+void
 message_fatal(const char *format, ...)
 {
 	va_list ap;

@@ -19,21 +19,21 @@ enum message_verbosity_t {
 };
 
 /// Increases verbosity level
-extern void message_verbosity_increase(void);
+void message_verbosity_increase(void);
 
 /// Decreases verbosity level
-extern void message_verbosity_decrease(void);
+void message_verbosity_decrease(void);
 
 /// Prints help message
-extern void message_help(bool long_help) lib_attr_noreturn;
+void message_help(bool long_help) lib_attr_noreturn;
 
 /// Prints version info
-extern void message_version(void) lib_attr_noreturn;
+void message_version(void) lib_attr_noreturn;
 
 /// Prints a message taking into account current verbosity level
-extern void message(enum message_verbosity_t ver, const char *format, ...);
+void message(enum message_verbosity_t ver, const char *format, ...);
 
 /// Prints a message and terminates the program with an error
-extern void message_fatal(const char *format, ...) lib_attr_noreturn;
+void message_fatal(const char *format, ...) lib_attr_noreturn;
 
 #endif /* WHAM_MESSAGE_H */

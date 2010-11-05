@@ -8,7 +8,7 @@
 #include "common.h"
 #include "message.h"
 
-extern void *
+void *
 xalloc(size_t size)
 {
 	if (size == 0)
@@ -22,7 +22,7 @@ xalloc(size_t size)
 	return ptr;
 }
 
-extern void
+void
 lib_exit(enum exit_status_t status)
 {
 	exit(status);
