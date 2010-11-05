@@ -66,8 +66,8 @@ message_long_help(void)
 	puts("  Input source:\n");
 
 	puts(
-"    -i, --input=FILE       Name of the input file. Input will be read from\n"
-"                           standard input if you do not specify this option."
+"    -i, --input=FILE       Name of the input file. Input is read from\n"
+"                           standard input if you do not specify input file."
 "\n");
 
 	puts("  Main control options:\n");
@@ -91,8 +91,8 @@ message_long_help(void)
 
 	puts("    -q, --quiet            Print only final PMF.");
 	puts("    -v, --verbose          Print all messages.");
-	puts("    -h, --help             Shows help.");
-	puts("    -H, --long-help        Shows this help message.");
+	puts("    -h, --help             Show help.");
+	puts("    -H, --long-help        Show this help message.");
 	puts("    -V, --version          Print program version.");
 }
 
