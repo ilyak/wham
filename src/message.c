@@ -61,7 +61,30 @@ message_short_help(void)
 static void
 message_long_help(void)
 {
-	puts("Usage: wham OPTIONS");
+	puts("Usage: wham [OPTION]\n");
+
+	puts("  Input source:\n");
+
+	puts("    -i, --input=FILE       \n");
+	
+	puts("  Main control options:\n");
+
+	puts("    -b, --beta=BETA        ");
+	puts("    -m, --min=MIN          ");
+	puts("    -M, --max=MAX          ");
+	puts("    -p, --period=PERIOD    ");
+	puts("    -n, --bins=BINS        ");
+	puts("    -e, --tol=TOL          ");
+	puts("    -s, --print-step=STEP  ");
+	puts("    -I, --max-iter=ITER    \n");
+
+	puts("  Other options:\n");
+
+	puts("    -q, --quiet            ");
+	puts("    -v, --verbose          ");
+	puts("    -h, --help             ");
+	puts("    -H, --long-help        ");
+	puts("    -V, --version          ");
 }
 
 extern void
