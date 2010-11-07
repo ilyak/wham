@@ -61,39 +61,35 @@ message_short_help(void)
 static void
 message_long_help(void)
 {
-	puts("Usage: wham [OPTION]\n");
-
-	puts("  Input source:\n");
-
 	puts(
+"Usage: wham [OPTION]\n"
+"\n"
+"  Input source:\n"
+"\n"
 "    -i, --input=FILE       Name of the input file. Input is read from\n"
-"                           standard input if you do not specify input file."
-"\n");
-
-	puts("  Main control options:\n");
-
-	puts(
+"                           standard input if you do not specify input file.\n"
+"\n"
+"  Main control options:\n"
+"\n"
 "    -b, --beta=BETA        1 / (k * T), where k is Boltzmann constant and T\n"
-"                           is temperature. Energy units used here will also\n"
-"                           be used for final PMF.");
-	puts("    -m, --min=MIN          Lower bound of histogram.");
-	puts("    -M, --max=MAX          Upper bound of histogram.");
-	puts("    -p, --period=PERIOD    Period for periodic coordinates.");
-	puts("    -n, --bins=BINS        Number of bins in final PMF.");
-	puts("    -e, --tol=TOL          Convergence tolerance.");
-	puts(
+"                           is temperature. Energy units used here will be\n"
+"                           used for final PMF.\n"
+"    -m, --min=MIN          Lower bound of histogram.\n"
+"    -M, --max=MAX          Upper bound of histogram.\n"
+"    -p, --period=PERIOD    Period for periodic coordinates.\n"
+"    -n, --bins=BINS        Number of bins in final PMF.\n"
+"    -e, --tol=TOL          Convergence tolerance.\n"
 "    -s, --print-step=STEP  Current progress will be printed every STEP\n"
-"                           iterations.");
-	puts(
-"    -I, --max-iter=ITER    Maximum number of iterations to perform.\n");
-
-	puts("  Other options:\n");
-
-	puts("    -q, --quiet            Print only final PMF.");
-	puts("    -v, --verbose          Print all messages.");
-	puts("    -h, --help             Show help.");
-	puts("    -H, --long-help        Show this help message.");
-	puts("    -V, --version          Print program version.");
+"                           iterations.\n"
+"    -I, --max-iter=ITER    Maximum number of iterations to perform.\n"
+"\n"
+"  Other options:\n"
+"\n"
+"    -q, --quiet            Print only final PMF.\n"
+"    -v, --verbose          Print all messages.\n"
+"    -h, --help             Show help.\n"
+"    -H, --long-help        Show this help message.\n"
+"    -V, --version          Print program version.");
 }
 
 void
