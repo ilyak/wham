@@ -44,9 +44,9 @@ message(enum message_verbosity_t ver, const char *format, ...)
 void
 message_version(void)
 {
-	puts(PACKAGE_NAME " version " PACKAGE_VERSION);
+	puts("Weighted Histogram Analysis Method (" PACKAGE_STRING ")");
 	puts("Copyright (c) 2010 Ilya Kaliman");
-	puts("See file COPYING for conditions of distribution and use");
+	puts("See file COPYING for conditions of distribution and use.");
 
 	lib_exit(E_SUCCESS);
 }
