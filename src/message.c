@@ -87,8 +87,8 @@ message_long_help(void)
 "\n"
 "    -q, --quiet            Print only final PMF.\n"
 "    -v, --verbose          Print all messages.\n"
-"    -h, --help             Show help.\n"
-"    -H, --long-help        Show this help message.\n"
+"    -h, --usage            Show short help.\n"
+"    -H, --help             Show this help message.\n"
 "    -V, --version          Print program version.");
 }
 

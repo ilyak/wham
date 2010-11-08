@@ -30,8 +30,8 @@ parse_args(int argc, char **argv)
 		{ "input",        required_argument,  NULL,  'i' },
 
 		{ "quiet",        no_argument,        NULL,  'q' },
-		{ "help",         no_argument,        NULL,  'h' },
-		{ "long-help",    no_argument,        NULL,  'H' },
+		{ "usage",        no_argument,        NULL,  'h' },
+		{ "help",         no_argument,        NULL,  'H' },
 		{ "verbose",      no_argument,        NULL,  'v' },
 		{ "version",      no_argument,        NULL,  'V' },
 
