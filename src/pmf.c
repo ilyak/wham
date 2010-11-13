@@ -5,6 +5,7 @@
 // See file COPYING for conditions of distribution and use.
 //
 
+#include <ctype.h>
 #include <math.h>
 #include <stdio.h>
 #include "args.h"
@@ -295,6 +296,23 @@ compute_pmf(void)
 	message(V_NORMAL, "\nComputation completed.");
 }
 
+static void
+skip_comment(FILE *stream)
+{
+	int c;
+
+	// skip white space
+	while ((c = fgetc(stream)) != EOF && isspace(c));
+
+	ungetc(c, stream);
+
+	// skip lines starting with '#'
+	while ((c = fgetc(stream)) != EOF && c == '#')
+		while ((c = fgetc(stream)) != EOF && c != '\n');
+
+	ungetc(c, stream);
+}
+
 void
 read_input(void)
 {
@@ -302,6 +320,8 @@ read_input(void)
 
 	if (in == NULL)
 		message_fatal("Unable to open input file");
+
+	skip_comment(in);
 
 	if (fscanf(in, "%d", &sim_count) != 1)
 		message_fatal("Unable to read number of simulations");

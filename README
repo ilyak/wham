@@ -32,8 +32,9 @@ To obtain the description of program options use the following command
 Input Format Description
 ========================
 
-Input data is assumed to be in free format (white space is not meaningful)
-with the following data included:
+Input data is assumed to be in free format. White space is not meaningful.
+Lines at the beginning of the file which start with # symbol will be ignored.
+The following data should be included:
 
 	Integer (m)
 		Number of windows.
