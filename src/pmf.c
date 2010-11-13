@@ -370,7 +370,7 @@ read_input(void)
 			}
 		}
 
-		message(V_VERBOSE, "Added %d of %d points from set %d",
+		message(V_VERBOSE, "Added %d of %d points from window %d",
 					nsim[i], npt, i + 1);
 	}
 
