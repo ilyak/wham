@@ -1,7 +1,77 @@
-This program implements Weighted Historgam Analysis Method.
 
-Algorithm Reference:
+		WHAM - Weighted Histogram Analysis Method
 
-Benoit Roux.
-The calculation of the potential of mean forece using computer simulations.
-Computer Physics Communications 91 (1995) 275-282.
+Overview
+========
+
+This program implements Weighted Histogram Analysis Method.
+
+WHAM allows you to calculate the Potential of Mean Force from a series of
+constrained molecular dynamics simulations. The algorithm used in this program
+is described in reference [1].
+
+
+Installation
+============
+
+The package uses conventional GNU installation scheme
+
+	./configure && make && sudo make install
+
+Please read the file INSTALL for detailed installation instructions.
+
+
+Program Options
+===============
+
+To obtain the description of program options use the following command
+
+	wham --help
+
+
+Input Format Description
+========================
+
+Input data is assumed to be in free format (white space is not meaningful)
+with the following data included:
+
+	Integer (m)
+		Number of windows.
+
+	Repeat (m) times:
+
+		Floating point
+			The coordinate value of the center of biasing
+			potential for the current window (this value is
+			named x0 in the expression below).
+
+		Floating point
+			The value of biasing constant (this value is named
+			k in the expression below).
+
+		Integer (n)
+			Number of data points.
+
+		Repeat (n) times:
+
+			Floating point
+				Distribution of the coordinate for the
+				current window (this value is named x in the
+				expression below).
+
+For example see test files in tests directory.
+
+The biasing potential used in molecular dynamic simulations is assumed to
+be in standard quadratic form:
+
+	U = 1/2 * k * (x - x0) * (x - x0)
+
+Be sure to account for 1/2 in front of the biasing constant in case your
+biasing potential does not include it.
+
+
+References
+==========
+
+1. Benoit Roux. The calculation of the potential of mean force using
+computer simulations. Computer Physics Communications 91 (1995), 275-282.
