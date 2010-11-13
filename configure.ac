@@ -30,5 +30,10 @@ AC_ARG_ENABLE([debugging-symbols],
 		[enable debugging symbols (default is NO)]),
 	CFLAGS="${CFLAGS} -O0 -g -fno-inline")
 
+AC_ARG_ENABLE([stack-protector],
+	AS_HELP_STRING([--enable-stack-protector],
+		[enable stack protector (default is NO)]),
+	CFLAGS="${CFLAGS} -fstack-protector-all")
+
 AC_CONFIG_FILES([Makefile src/Makefile tests/Makefile])
 AC_OUTPUT
