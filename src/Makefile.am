@@ -13,3 +13,5 @@ noinst_HEADERS = \
 	common.h \
 	message.h \
 	pmf.h
+
+wham_LDADD = -lm
