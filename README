@@ -33,8 +33,9 @@ Input Format Description
 ========================
 
 Input data is assumed to be in free format. White space is not meaningful.
-Lines at the beginning of the file which start with # symbol will be ignored.
-The following data should be included:
+Lines at the beginning of input which are empty (no white space allowed on
+these lines) or which start with '#' symbol will be ignored. The following
+data are expected in input:
 
 	Integer (m)
 		Number of windows.

@@ -296,19 +296,14 @@ compute_pmf(void)
 	message(V_NORMAL, "\nComputation completed.");
 }
 
+/// Skips empty lines and lines starting with '#' symbol
 static void
 skip_comment(FILE *stream)
 {
 	int c;
 
-	// skip white space
-	while ((c = fgetc(stream)) != EOF && isspace(c));
-
-	ungetc(c, stream);
-
-	// skip lines starting with '#'
-	while ((c = fgetc(stream)) != EOF && c == '#')
-		while ((c = fgetc(stream)) != EOF && c != '\n');
+	while ((c = fgetc(stream)) != EOF && (c == '#' || c == '\n'))
+		while (c != '\n' && (c = fgetc(stream)) != EOF);
 
 	ungetc(c, stream);
 }
