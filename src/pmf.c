@@ -206,8 +206,7 @@ pmf_iteration(double *f, double *log_r)
 			work_sims[j] = log_nsim[j] + f[j] - beta * bias;
 		}
 
-		double log_den = log_sum(work_sims, sim_count);
-		log_r[i] = log_nbin[i] - log_den;
+		log_r[i] = log_nbin[i] - log_sum(work_sims, sim_count);
 	}
 
 	for (int j = 0; j < sim_count; j++) {
