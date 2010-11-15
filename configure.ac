@@ -1,6 +1,6 @@
 AC_PREREQ([2.64])
 AC_COPYRIGHT([Copyright (c) 2010 Ilya Kaliman])
-AC_INIT([wham], [2.0], [ilya.kaliman@gmail.com])
+AC_INIT([wham], [2.0.0], [ilya.kaliman@gmail.com])
 AC_CONFIG_SRCDIR([src/pmf.c])
 AC_CONFIG_HEADERS([config.h])
 
