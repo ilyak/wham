@@ -4,7 +4,7 @@ AC_INIT([wham], [2.0.0], [ilya.kaliman@gmail.com])
 AC_CONFIG_SRCDIR([src/pmf.c])
 AC_CONFIG_HEADERS([config.h])
 
-AM_INIT_AUTOMAKE([-Wall -Werror])
+AM_INIT_AUTOMAKE([1.11.1 dist-xz -Wall -Werror])
 
 AC_LANG([C])
 AC_PROG_CC
