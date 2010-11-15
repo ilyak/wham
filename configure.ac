@@ -14,7 +14,13 @@ if test "x$ac_cv_prog_cc_c99" = xno ; then
 fi
 AC_PROG_CPP
 
-DEVELOPER_CFLAGS="-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wshadow -Wcast-align -Wunused-parameter -Wchar-subscripts -Winline -Wnested-externs -Wredundant-decls -Wformat=2 -Winit-self -Wmissing-include-dirs -Wstrict-aliasing -Wfloat-equal -Wundef -Wbad-function-cast -Wlogical-op -Waggregate-return -Wold-style-definition -Wmissing-declarations -Wmissing-noreturn"
+DEVELOPER_CFLAGS="-Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes \
+-Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wshadow \
+-Wcast-align -Wunused-parameter -Wchar-subscripts -Winline -Wnested-externs \
+-Wredundant-decls -Wformat=2 -Winit-self -Wmissing-include-dirs \
+-Wstrict-aliasing -Wfloat-equal -Wundef -Wbad-function-cast -Wlogical-op \
+-Waggregate-return -Wold-style-definition -Wmissing-declarations \
+-Wmissing-noreturn"
 
 AC_ARG_ENABLE([developer-warnings],
 	AS_HELP_STRING([--enable-developer-warnings],
