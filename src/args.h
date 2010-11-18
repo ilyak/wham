@@ -9,6 +9,6 @@
 #define WHAM_ARGS_H
 
 /// Parses program arguments
-void parse_args(int argc, char **argv);
+extern void parse_args(int argc, char **argv);
 
 #endif /* WHAM_ARGS_H */

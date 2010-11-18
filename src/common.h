@@ -20,9 +20,9 @@ enum exit_status_t {
 };
 
 /// Safe malloc
-void *xalloc(size_t size);
+extern void *xalloc(size_t size);
 
 /// Terminates the program by calling exit
-void lib_exit(enum exit_status_t status) lib_attr_noreturn;
+extern void lib_exit(enum exit_status_t status) lib_attr_noreturn;
 
 #endif /* WHAM_COMMON_H */

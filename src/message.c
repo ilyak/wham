@@ -13,21 +13,21 @@
 /// Verbosity level
 static enum message_verbosity_t verbosity = V_NORMAL;
 
-void
+extern void
 message_verbosity_increase(void)
 {
 	if (verbosity < V_VERBOSE)
 		verbosity++;
 }
 
-void
+extern void
 message_verbosity_decrease(void)
 {
 	if (verbosity > V_SILENT)
 		verbosity--;
 }
 
-void
+extern void
 message(enum message_verbosity_t ver, const char *format, ...)
 {
 	if (ver > verbosity)
@@ -41,7 +41,7 @@ message(enum message_verbosity_t ver, const char *format, ...)
 	va_end(ap);
 }
 
-void
+extern void
 message_version(void)
 {
 	puts("Weighted Histogram Analysis Method (" PACKAGE_STRING ")");
@@ -94,7 +94,7 @@ message_long_help(void)
 "    -V, --version          Print program version.");
 }
 
-void
+extern void
 message_help(bool long_help)
 {
 	if (long_help)
@@ -105,7 +105,7 @@ message_help(bool long_help)
 	lib_exit(E_SUCCESS);
 }
 
-void
+extern void
 message_fatal(const char *format, ...)
 {
 	va_list ap;

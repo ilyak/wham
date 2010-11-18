@@ -56,31 +56,31 @@ static double *log_nbin;
 /// Log of number of points in simulation
 static double *log_nsim;
 
-void
+extern void
 set_bin_count(int value)
 {
 	bin_count = value;
 }
 
-void
+extern void
 set_print_step(int value)
 {
 	print_step = value;
 }
 
-void
+extern void
 set_max_iter(int value)
 {
 	max_iter = value;
 }
 
-void
+extern void
 set_input_filename(const char *value)
 {
 	input = value;
 }
 
-void
+extern void
 set_beta(double value)
 {
 	if (value < 0.0)
@@ -89,7 +89,7 @@ set_beta(double value)
 	beta = value;
 }
 
-void
+extern void
 set_hist_min(double value)
 {
 	if (period > 0)
@@ -101,7 +101,7 @@ set_hist_min(double value)
 	hist_min = value;
 }
 
-void
+extern void
 set_hist_max(double value)
 {
 	if (period > 0)
@@ -113,7 +113,7 @@ set_hist_max(double value)
 	hist_max = value;
 }
 
-void
+extern void
 set_tolerance(double value)
 {
 	if (value < 0.0)
@@ -122,7 +122,7 @@ set_tolerance(double value)
 	tol = value;
 }
 
-void
+extern void
 set_period(double value)
 {
 	if (value < 0.0)
@@ -233,7 +233,7 @@ pmf_iteration(double *f, double *log_r)
 	}
 }
 
-void
+extern void
 compute_pmf(void)
 {
 	double f[sim_count], old_f[sim_count], log_r[bin_count];
@@ -307,7 +307,7 @@ skip_comment(FILE *stream)
 	ungetc(c, stream);
 }
 
-void
+extern void
 read_input(void)
 {
 	FILE *in = input ? fopen(input, "r") : stdin;
@@ -384,7 +384,7 @@ read_input(void)
 		fclose(in);
 }
 
-void
+extern void
 cleanup(void)
 {
 	free(bias_x);
