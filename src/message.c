@@ -13,22 +13,19 @@
 /// Verbosity level
 static enum message_verbosity_t verbosity = V_NORMAL;
 
-extern void
-message_verbosity_increase(void)
+extern void message_verbosity_increase(void)
 {
 	if (verbosity < V_VERBOSE)
 		verbosity++;
 }
 
-extern void
-message_verbosity_decrease(void)
+extern void message_verbosity_decrease(void)
 {
 	if (verbosity > V_SILENT)
 		verbosity--;
 }
 
-extern void
-message(enum message_verbosity_t ver, const char *format, ...)
+extern void message(enum message_verbosity_t ver, const char *format, ...)
 {
 	if (ver > verbosity)
 		return;
@@ -41,8 +38,7 @@ message(enum message_verbosity_t ver, const char *format, ...)
 	va_end(ap);
 }
 
-extern void
-message_version(void)
+extern void message_version(void)
 {
 	puts("Weighted Histogram Analysis Method (" PACKAGE_STRING ")");
 	puts("Copyright (c) 2010 Ilya Kaliman");
@@ -51,15 +47,13 @@ message_version(void)
 	lib_exit(E_SUCCESS);
 }
 
-static void
-message_short_help(void)
+static void message_short_help(void)
 {
 	puts("Usage: wham -b beta -m min -M max -n bins -e tol -I iter");
 	puts("            -s step -p period -i input -qhHvV");
 }
 
-static void
-message_long_help(void)
+static void message_long_help(void)
 {
 	puts(
 "Usage: wham [OPTIONS]\n"
@@ -94,8 +88,7 @@ message_long_help(void)
 "    -V, --version          Print program version.");
 }
 
-extern void
-message_help(bool long_help)
+extern void message_help(bool long_help)
 {
 	if (long_help)
 		message_long_help();
@@ -105,8 +98,7 @@ message_help(bool long_help)
 	lib_exit(E_SUCCESS);
 }
 
-extern void
-message_fatal(const char *format, ...)
+extern void message_fatal(const char *format, ...)
 {
 	va_list ap;
 

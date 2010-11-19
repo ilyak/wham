@@ -56,32 +56,27 @@ static double *log_nbin;
 /// Log of number of points in simulation
 static double *log_nsim;
 
-extern void
-set_bin_count(int value)
+extern void set_bin_count(int value)
 {
 	bin_count = value;
 }
 
-extern void
-set_print_step(int value)
+extern void set_print_step(int value)
 {
 	print_step = value;
 }
 
-extern void
-set_max_iter(int value)
+extern void set_max_iter(int value)
 {
 	max_iter = value;
 }
 
-extern void
-set_input_filename(const char *value)
+extern void set_input_filename(const char *value)
 {
 	input = value;
 }
 
-extern void
-set_beta(double value)
+extern void set_beta(double value)
 {
 	if (value < 0.0)
 		message_fatal("Beta must be positive");
@@ -89,8 +84,7 @@ set_beta(double value)
 	beta = value;
 }
 
-extern void
-set_hist_min(double value)
+extern void set_hist_min(double value)
 {
 	if (period > 0)
 		message_fatal("Incompatible options -m and -p");
@@ -101,8 +95,7 @@ set_hist_min(double value)
 	hist_min = value;
 }
 
-extern void
-set_hist_max(double value)
+extern void set_hist_max(double value)
 {
 	if (period > 0)
 		message_fatal("Incompatible options -M and -p");
@@ -113,8 +106,7 @@ set_hist_max(double value)
 	hist_max = value;
 }
 
-extern void
-set_tolerance(double value)
+extern void set_tolerance(double value)
 {
 	if (value < 0.0)
 		message_fatal("Tolerance must be positive");
@@ -122,8 +114,7 @@ set_tolerance(double value)
 	tol = value;
 }
 
-extern void
-set_period(double value)
+extern void set_period(double value)
 {
 	if (value < 0.0)
 		message_fatal("Period must be positive");
@@ -133,20 +124,17 @@ set_period(double value)
 	hist_max = period;
 }
 
-static double
-hist_x(int i)
+static double hist_x(int i)
 {
 	return hist_min + (hist_max - hist_min) / bin_count * i;
 }
 
-static int
-bin_index(double x)
+static int bin_index(double x)
 {
 	return (int)((x - hist_min) / (hist_max - hist_min) * bin_count);
 }
 
-static double
-find_min(const double *v, int n)
+static double find_min(const double *v, int n)
 {
 	double rv = *v++;
 
@@ -157,8 +145,7 @@ find_min(const double *v, int n)
 	return rv;
 }
 
-static double
-find_max(const double *v, int n)
+static double find_max(const double *v, int n)
 {
 	double rv = *v++;
 
@@ -169,8 +156,7 @@ find_max(const double *v, int n)
 	return rv;
 }
 
-static double
-log_sum(const double *v, int n)
+static double log_sum(const double *v, int n)
 {
 	double sum = 0.0;
 	double max = find_max(v, n);
@@ -181,8 +167,7 @@ log_sum(const double *v, int n)
 	return log(sum) + max;
 }
 
-static void
-pmf_iteration(double *f, double *log_r)
+static void pmf_iteration(double *f, double *log_r)
 {
 	double work_sims[sim_count], work_bins[bin_count];
 
@@ -233,8 +218,7 @@ pmf_iteration(double *f, double *log_r)
 	}
 }
 
-extern void
-compute_pmf(void)
+extern void compute_pmf(void)
 {
 	double f[sim_count], old_f[sim_count], log_r[bin_count];
 
@@ -296,8 +280,7 @@ compute_pmf(void)
 }
 
 /// Skips empty lines and lines starting with '#' symbol
-static void
-skip_comment(FILE *stream)
+static void skip_comment(FILE *stream)
 {
 	int c;
 
@@ -307,8 +290,7 @@ skip_comment(FILE *stream)
 	ungetc(c, stream);
 }
 
-extern void
-read_input(void)
+extern void read_input(void)
 {
 	FILE *in = input ? fopen(input, "r") : stdin;
 
@@ -384,8 +366,7 @@ read_input(void)
 		fclose(in);
 }
 
-extern void
-cleanup(void)
+extern void cleanup(void)
 {
 	free(bias_x);
 	free(bias_k);

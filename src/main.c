@@ -9,8 +9,7 @@
 #include "common.h"
 #include "pmf.h"
 
-int
-main(int argc, char **argv)
+int main(int argc, char **argv)
 {
 	parse_args(argc, argv);
 

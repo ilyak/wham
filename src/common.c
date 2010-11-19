@@ -8,8 +8,7 @@
 #include "common.h"
 #include "message.h"
 
-extern void *
-xalloc(size_t size)
+extern void *xalloc(size_t size)
 {
 	if (size == 0)
 		message_fatal("Unsupported request for zero byte allocation");
@@ -22,8 +21,7 @@ xalloc(size_t size)
 	return ptr;
 }
 
-extern void
-lib_exit(enum exit_status_t status)
+extern void lib_exit(enum exit_status_t status)
 {
 	exit(status);
 }
