@@ -25,7 +25,7 @@ static const char *input;
 /// Convergence tolerance
 static double tol = 1.0e-5;
 
-/// Coordinate period
+/// Period for periodic coordinates
 static double period;
 
 /// Number of bins in histogram
