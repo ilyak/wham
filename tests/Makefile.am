@@ -1,1 +1,1 @@
-EXTRA_DIST = butane
+EXTRA_DIST = butane test.sh
