@@ -274,7 +274,7 @@ extern void compute_pmf(void)
 	message(V_NORMAL, "%9s %13s\n", "x", "pmf");
 
 	for (int i = 0; i < bin_count; i++)
-		message(V_SILENT, "%12.6lf %12.6lf", hist_x(i), pmf[i]);
+		message(V_SILENT, "%12.6f %12.6f", hist_x(i), pmf[i]);
 
 	message(V_NORMAL, "\nComputation completed.");
 }
