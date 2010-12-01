@@ -49,8 +49,9 @@ extern void message_version(void)
 
 static void message_short_help(void)
 {
-	puts("Usage: wham -b beta -m min -M max -n bins -e tol -I iter");
-	puts("            -s step -p period -i input -qhHvV");
+	puts(
+"Usage: wham [-b beta] [-m min] [-M max] [-n bins] [-e tol] [-I iter]\n"
+"            [-s step] [-p period] [-i input] [-qhHvV]");
 }
 
 static void message_long_help(void)
