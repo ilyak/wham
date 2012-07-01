@@ -44,4 +44,7 @@ extern void compute_pmf(void);
 /// Deallocates used memory
 extern void cleanup(void);
 
+/// Check options
+extern void check_opts(void);
+
 #endif /* WHAM_PMF_H */

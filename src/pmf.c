@@ -89,9 +89,6 @@ extern void set_hist_min(double value)
 	if (period > 0)
 		message_fatal("Incompatible options -m and -p");
 
-	if (value > hist_max)
-		message_fatal("Histogram minimum must be less than maximum");
-
 	hist_min = value;
 }
 
@@ -99,9 +96,6 @@ extern void set_hist_max(double value)
 {
 	if (period > 0)
 		message_fatal("Incompatible options -M and -p");
-
-	if (value < hist_min)
-		message_fatal("Histogram minimum must be less than maximum");
 
 	hist_max = value;
 }
@@ -122,6 +116,12 @@ extern void set_period(double value)
 	period = value;
 	hist_min = 0.0;
 	hist_max = period;
+}
+
+extern void check_opts(void)
+{
+	if (hist_min >= hist_max)
+		message_fatal("Histogram minimum must be less than maximum");
 }
 
 static double hist_x(int i)

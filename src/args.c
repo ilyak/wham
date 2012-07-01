@@ -102,4 +102,6 @@ extern void parse_args(int argc, char **argv)
 			lib_exit(E_ERROR);
 		}
 	}
+
+	check_opts();
 }
