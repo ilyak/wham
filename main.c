@@ -12,10 +12,8 @@
 int main(int argc, char **argv)
 {
 	parse_args(argc, argv);
-
 	read_input();
 	compute_pmf();
-
 	cleanup();
-	lib_exit(E_SUCCESS);
+	return 0;
 }

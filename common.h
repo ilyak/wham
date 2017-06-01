@@ -10,19 +10,13 @@
 
 #include <stdlib.h>
 
-#define lib_attr_noreturn __attribute__((__noreturn__))
-
 /// Exit status
 enum exit_status_t {
 	E_SUCCESS  = 0,
 	E_ERROR    = 1,
-	E_WARNING  = 2
 };
 
 /// Safe malloc
-extern void *xalloc(size_t size);
-
-/// Terminates the program by calling exit
-extern void lib_exit(enum exit_status_t status) lib_attr_noreturn;
+void *xmalloc(size_t size);
 
 #endif /* WHAM_COMMON_H */

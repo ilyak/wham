@@ -5,46 +5,43 @@
 // See file COPYING for conditions of distribution and use.
 //
 
+#include "message.h"
+
 #include <stdarg.h>
 #include <stdio.h>
-#include <config.h>
-#include "message.h"
 
 /// Verbosity level
 static enum message_verbosity_t verbosity = V_NORMAL;
 
-extern void message_verbosity_increase(void)
+void message_verbosity_increase(void)
 {
 	if (verbosity < V_VERBOSE)
 		verbosity++;
 }
 
-extern void message_verbosity_decrease(void)
+void message_verbosity_decrease(void)
 {
 	if (verbosity > V_SILENT)
 		verbosity--;
 }
 
-extern void message(enum message_verbosity_t ver, const char *format, ...)
+void message(enum message_verbosity_t ver, const char *format, ...)
 {
-	if (ver > verbosity)
-		return;
-
 	va_list ap;
 
+	if (ver > verbosity)
+		return;
 	va_start(ap, format);
 	vprintf(format, ap);
-	putchar('\n');
 	va_end(ap);
+	putchar('\n');
 }
 
-extern void message_version(void)
+void message_version(void)
 {
-	puts("Weighted Histogram Analysis Method (" PACKAGE_STRING ")");
+	puts("Weighted Histogram Analysis Method");
 	puts("Copyright (c) 2010 Ilya Kaliman");
-	puts("See file COPYING for conditions of distribution and use.");
-
-	lib_exit(E_SUCCESS);
+	exit(E_SUCCESS);
 }
 
 static void message_short_help(void)
@@ -89,24 +86,21 @@ static void message_long_help(void)
 "    -V, --version          Print program version.");
 }
 
-extern void message_help(bool long_help)
+void message_help(int long_help)
 {
-	if (long_help)
-		message_long_help();
-	else
-		message_short_help();
+	if (long_help) message_long_help();
+	else message_short_help();
 
-	lib_exit(E_SUCCESS);
+	exit(E_SUCCESS);
 }
 
-extern void message_fatal(const char *format, ...)
+void message_fatal(const char *format, ...)
 {
 	va_list ap;
 
 	va_start(ap, format);
 	vfprintf(stderr, format, ap);
-	putc('\n', stderr);
 	va_end(ap);
-
-	lib_exit(E_ERROR);
+	putc('\n', stderr);
+	exit(E_ERROR);
 }
