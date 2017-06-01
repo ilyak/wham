@@ -1,8 +1,5 @@
-
-		WHAM - Weighted Histogram Analysis Method
-
-Overview
-========
+WHAM - Weighted Histogram Analysis Method
+=========================================
 
 This program implements Weighted Histogram Analysis Method.
 
@@ -11,22 +8,24 @@ constrained molecular dynamics simulations. The algorithm used in this program
 is described in reference [1].
 
 
-Installation
-============
+Compilation
+===========
 
-The package uses conventional GNU installation scheme
+Use standard make utility to compile the program:
 
-	./configure && make && sudo make install
+	make
 
-Please read the file INSTALL for detailed installation instructions.
+The program can be tested using the included butane sample:
+
+	./wham -v -p 6.28 -i butane.dat > butane.out
 
 
 Program Options
 ===============
 
-To obtain the description of program options use the following command
+To obtain the description of program options use the following command:
 
-	wham --help
+	./wham --help
 
 
 Input Format Description
@@ -61,7 +60,7 @@ data are expected in input:
 				current window (this value is named x in the
 				expression below).
 
-For example see test files in tests directory.
+For a sample input, see butane.dat file.
 
 The biasing potential used in molecular dynamic simulations is assumed to
 be in standard quadratic form:
@@ -70,22 +69,6 @@ be in standard quadratic form:
 
 Be sure to account for 1/2 in front of the biasing constant in case your
 biasing potential does not include it.
-
-
-Project Page
-============
-
-The official page of the project and its git repository is located at
-
-	http://github.com/ilyak/wham
-
-
-Bugs and Comments
-=================
-
-Please feel free to send any comments, bug reports, and suggestions to
-
-	Ilya Kaliman, ilya.kaliman@gmail.com
 
 
 References
