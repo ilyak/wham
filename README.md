@@ -1,5 +1,4 @@
-WHAM - Weighted Histogram Analysis Method
-=========================================
+# WHAM - Weighted Histogram Analysis Method
 
 This program implements Weighted Histogram Analysis Method.
 
@@ -7,9 +6,7 @@ WHAM allows you to calculate the Potential of Mean Force from a series of
 constrained molecular dynamics simulations. The algorithm used in this program
 is described in reference [1].
 
-
-Compilation
-===========
+### Compilation
 
 Use standard make utility to compile the program:
 
@@ -19,17 +16,13 @@ The program can be tested using the included butane sample:
 
 	./wham -v -p 6.28 -i butane.dat > butane.out
 
-
-Program Options
-===============
+### Program Options
 
 To obtain the description of program options use the following command:
 
 	./wham --help
 
-
-Input Format Description
-========================
+### Input Format Description
 
 Input data is assumed to be in free format. White space is not meaningful.
 Lines at the beginning of input which are empty (no white space allowed on
@@ -70,9 +63,7 @@ be in standard quadratic form:
 Be sure to account for 1/2 in front of the biasing constant in case your
 biasing potential does not include it.
 
-
-References
-==========
+### References
 
 1. Benoit Roux. The calculation of the potential of mean force using
 computer simulations. Computer Physics Communications 91 (1995), 275-282.
