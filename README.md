@@ -14,13 +14,14 @@ Use standard make utility to compile the program:
 
 The program can be tested using the included butane sample:
 
-	./wham -v -p 6.28 -i butane.dat > butane.out
+	wham -v -p 6.28 -i butane.dat > butane.out
+	diff butane.out butane.ref
 
 ### Program Options
 
 To obtain the description of program options use the following command:
 
-	./wham --help
+	wham --help
 
 ### Input Format Description
 

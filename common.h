@@ -12,8 +12,8 @@
 
 /// Exit status
 enum exit_status_t {
-	E_SUCCESS  = 0,
-	E_ERROR    = 1,
+	E_SUCCESS = 0,
+	E_ERROR   = 1,
 };
 
 /// Safe malloc

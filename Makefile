@@ -10,7 +10,7 @@ $(PROG): $(ALL_O)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $(PROG) $(ALL_O) $(LIBS)
 
 check: $(PROG)
-	./wham -v -p 6.28 -i butane.dat > butane.out
+	./$(PROG) -v -p 6.28 -i butane.dat > butane.out
 	diff butane.out butane.ref
 
 clean:
