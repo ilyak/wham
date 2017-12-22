@@ -5,6 +5,8 @@ LIBS= -lm
 PROG= wham
 ALL_O= args.o common.o main.o message.o pmf.o
 
+all: $(PROG)
+
 $(PROG): $(ALL_O)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $(PROG) $(ALL_O) $(LIBS)
 
@@ -15,4 +17,4 @@ check: $(PROG)
 clean:
 	rm -f *.core *.o butane.out $(PROG)
 
-.PHONY: check clean
+.PHONY: all check clean
