@@ -282,9 +282,10 @@ static void skip_comment(FILE *stream)
 
 void read_input(void)
 {
-	FILE *in = input ? fopen(input, "r") : stdin;
-	int i, j;
+	FILE *in;
+	int i, j, *nbin, *nsim;
 
+	in = input ? fopen(input, "r") : stdin;
 	if (in == NULL)
 		message_fatal("Unable to open input file");
 
@@ -296,15 +297,12 @@ void read_input(void)
 	if (sim_count <= 0)
 		message_fatal("Expected positive number of simulations");
 
-	size_t size_sim = sizeof(double) * sim_count;
-	size_t size_bin = sizeof(double) * bin_count;
-
-	bias_x = xmalloc(size_sim);
-	bias_k = xmalloc(size_sim);
-	log_nbin = xmalloc(size_bin);
-	log_nsim = xmalloc(size_sim);
-
-	int nbin[bin_count], nsim[sim_count];
+	bias_x = xmalloc(sim_count * sizeof(*bias_x));
+	bias_k = xmalloc(sim_count * sizeof(*bias_k));
+	log_nbin = xmalloc(bin_count * sizeof(*log_nbin));
+	log_nsim = xmalloc(sim_count * sizeof(*log_nsim));
+	nbin = xmalloc(bin_count * sizeof(*nbin));
+	nsim = xmalloc(sim_count * sizeof(*nsim));
 
 	for (i = 0; i < bin_count; i++)
 		nbin[i] = 0;
@@ -352,6 +350,8 @@ void read_input(void)
 
 	if (in != stdin)
 		fclose(in);
+	free(nbin);
+	free(nsim);
 }
 
 void cleanup(void)
