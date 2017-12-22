@@ -1,4 +1,3 @@
-CC= cc
 CFLAGS= -Wall -Wextra -g
 LDFLAGS=
 LIBS= -lm
